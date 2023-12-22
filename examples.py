@@ -9,6 +9,12 @@ vectorLib = Vector()
 statsLib = Statistics()
 graphLib = Graph()
 
+# Get Covariance and Correlation of two data sets
+dataX = [30, 35, 40, 25, 35]
+dataY = [5, 8, 8, 4, 5]
+covariance = statsLib.getCovariance(dataX, dataY)
+correlation = statsLib.getCorrelation(dataX, dataY)
+print("Covariance:", covariance, "\nCorrelation:", correlation)
 
 # Show binomial distribution of 5 dice rolls
 binomial = statsLib.getBinomialDistribution((1/6), 5)

@@ -47,17 +47,35 @@ class Statistics:
     return [x for x, y in collection.items() if y == max(collection.values())]
 
   def getVariance(self, data):
-    mean = self.mean(data)
+    mean = self.getArithmeticMean(data)
     length = len(data)
     sum = 0
     for x in data:
       sum += (x - mean) ** 2
-    return sum / length
+    return sum / (length - 1)
   
   def getStandardDeviation(self, data):
     variance = self.getVariance(data)
+    print(math.sqrt(variance))
     return math.sqrt(variance)
   
+  def getCovariance(self, x, y):
+    meanX = self.getArithmeticMean(x)
+    meanY = self.getArithmeticMean(y)
+    length = len(x)
+    sum = 0
+    for i in range(length):
+      sum += (x[i] - meanX) * (y[i] - meanY)
+    covariance = sum / (length - 1)
+    return covariance
+  
+  def getCorrelation(self, x, y):
+    covariance = self.getCovariance(x,y)
+    stdDevX = self.getStandardDeviation(x)
+    stdDevY = self.getStandardDeviation(y)
+    correlation = covariance / (stdDevX * stdDevY)
+    return correlation
+
   def getExpectedValue(self, probability, numOfTries):
     binomialDist = self.getBinomialDistribution(probability, numOfTries)
     sum = 0

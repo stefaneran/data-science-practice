@@ -9,6 +9,8 @@ vectorLib = Vector()
 statsLib = Statistics()
 graphLib = Graph()
 
-data = [1.200, 0.800, 1.100]
-mean = statsLib.getHarmonicMean(data)
-print(mean)
+dataX = [30, 35, 40, 25, 35]
+dataY = [5, 8, 8, 4, 5]
+covariance = statsLib.getCovariance(dataX, dataY)
+correlation = statsLib.getCorrelation(dataX, dataY)
+print("Covariance:", covariance, "\nCorrelation:", correlation)
